@@ -61,7 +61,7 @@
             this.saveQuote.Name = "saveQuote";
             this.saveQuote.Size = new System.Drawing.Size(151, 43);
             this.saveQuote.TabIndex = 8;
-            this.saveQuote.Text = "Save";
+            this.saveQuote.Text = "Quote";
             this.saveQuote.UseVisualStyleBackColor = false;
             this.saveQuote.Click += new System.EventHandler(this.save_Click);
             // 
