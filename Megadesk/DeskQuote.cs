@@ -115,15 +115,16 @@ namespace Megadesk
         /*
         * the getRushDaysPrice method
         * Purpose: to compute total cost for the shipping
-        * author: Antonio Lefiñir
+        * author: Hector Rodriguez // Antonio Lefiñir
         * create date:  5 may 2020
         */
         public double getRushDaysPrice()
         {
             string deskType = getDeskType();
             double rushOrderCost = 0;
-            //
-            int[,] rushOrdersCosts =getRushOrder();
+
+            //obtain the costs of the rush order from file
+            int[,] rushOrdersCosts = getRushOrder();
 
 
             switch (this.rushDays)
@@ -298,12 +299,8 @@ namespace Megadesk
             {
                 throw new ApplicationException("The file cannot be opened", e);
             }
-
-
-
             return arrayRushOrders;
 
-            //--
         }
 
 
