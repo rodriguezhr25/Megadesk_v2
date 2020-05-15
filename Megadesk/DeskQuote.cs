@@ -124,56 +124,59 @@ namespace Megadesk
             double rushOrderCost = 0;
 
             //obtain the costs of the rush order from file
-            int[,] rushOrdersCosts = getRushOrder();
+            int[,] arrayOrdersCosts = getRushOrder();
 
-
-            switch (this.rushDays)
+            //!!ATTENTION if an error has occurred the array returns null
+            if (arrayOrdersCosts != null)
             {
-                case 3:
-                    if (deskType == "small")
-                    {
-                        rushOrderCost = rushOrdersCosts[0,0];
-                    }
-                    else if (deskType == "medium")
-                    {
-                        rushOrderCost = rushOrdersCosts[0, 1];
-                    }
-                    else
-                    {
-                        rushOrderCost = rushOrdersCosts[0, 2];
+                switch (this.rushDays)
+                {
+                    case 3:
+                        if (deskType == "small")
+                        {
+                            rushOrderCost = arrayOrdersCosts[0, 0];
+                        }
+                        else if (deskType == "medium")
+                        {
+                            rushOrderCost = arrayOrdersCosts[0, 1];
+                        }
+                        else
+                        {
+                            rushOrderCost = arrayOrdersCosts[0, 2];
 
-                    }
-                    break;
-                case 5:
-                    if (deskType == "small")
-                    {
-                        rushOrderCost = rushOrdersCosts[1, 0];
-                    }
-                    else if (deskType == "medium")
-                    {
-                        rushOrderCost = rushOrdersCosts[1, 1];
-                    }
-                    else
-                    {
-                        rushOrderCost = rushOrdersCosts[1, 2];
+                        }
+                        break;
+                    case 5:
+                        if (deskType == "small")
+                        {
+                            rushOrderCost = arrayOrdersCosts[1, 0];
+                        }
+                        else if (deskType == "medium")
+                        {
+                            rushOrderCost = arrayOrdersCosts[1, 1];
+                        }
+                        else
+                        {
+                            rushOrderCost = arrayOrdersCosts[1, 2];
 
-                    }
-                    break;
-                case 7:
-                    if (deskType == "small")
-                    {
-                        rushOrderCost = rushOrdersCosts[2, 0];
-                    }
-                    else if (deskType == "medium")
-                    {
-                        rushOrderCost = rushOrdersCosts[2, 1];
-                    }
-                    else
-                    {
-                        rushOrderCost = rushOrdersCosts[2, 2];
+                        }
+                        break;
+                    case 7:
+                        if (deskType == "small")
+                        {
+                            rushOrderCost = arrayOrdersCosts[2, 0];
+                        }
+                        else if (deskType == "medium")
+                        {
+                            rushOrderCost = arrayOrdersCosts[2, 1];
+                        }
+                        else
+                        {
+                            rushOrderCost = arrayOrdersCosts[2, 2];
 
-                    }
-                    break;
+                        }
+                        break;
+                }
 
             }
             return rushOrderCost;
@@ -279,17 +282,16 @@ namespace Megadesk
                             yIndex = 0;
                             xIndex++;
                         }
-
+                        fileRushOrders.Close();
 
                     }
                     catch (FormatException)
-                    {
-                        //MessageBox.Show("Error!\n\nThe width size has to be a numeric value", "Add Quote", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    {                        
+                        return null;
                     }
                     catch (Exception exception)
                     {
-                        Console.WriteLine(
-                            $"Unexpected error:  { exception.Message }");
+                        return null;
                     }
 
                 }
@@ -297,8 +299,12 @@ namespace Megadesk
             }
             catch (Exception e)
             {
-                throw new ApplicationException("The file cannot be opened", e);
+                return null;
+                //throw new ApplicationException("The file cannot be opened", e);
+                
             }
+
+            //if an error has occurred the array returns null
             return arrayRushOrders;
 
         }
