@@ -114,6 +114,8 @@ namespace Megadesk
         /*
         * the getRushDaysPrice method
         * Purpose: to compute total cost for the shipping
+        * author: Antonio Lefiñir
+        * create date:  5 may 2020
         */
         public double getRushDaysPrice()
         {
