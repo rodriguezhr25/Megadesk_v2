@@ -122,51 +122,54 @@ namespace Megadesk
         {
             string deskType = getDeskType();
             double rushOrderCost = 0;
+            //
+            int[,] rushOrdersCosts =getRushOrder();
+
 
             switch (this.rushDays)
             {
                 case 3:
                     if (deskType == "small")
                     {
-                        rushOrderCost = 60;
+                        rushOrderCost = rushOrdersCosts[0,0];
                     }
                     else if (deskType == "medium")
                     {
-                        rushOrderCost = 70;
+                        rushOrderCost = rushOrdersCosts[0, 1];
                     }
                     else
                     {
-                        rushOrderCost = 80;
+                        rushOrderCost = rushOrdersCosts[0, 2];
 
                     }
                     break;
                 case 5:
                     if (deskType == "small")
                     {
-                        rushOrderCost = 40;
+                        rushOrderCost = rushOrdersCosts[1, 0];
                     }
                     else if (deskType == "medium")
                     {
-                        rushOrderCost = 50;
+                        rushOrderCost = rushOrdersCosts[1, 1];
                     }
                     else
                     {
-                        rushOrderCost = 60;
+                        rushOrderCost = rushOrdersCosts[1, 2];
 
                     }
                     break;
                 case 7:
                     if (deskType == "small")
                     {
-                        rushOrderCost = 30;
+                        rushOrderCost = rushOrdersCosts[2, 0];
                     }
                     else if (deskType == "medium")
                     {
-                        rushOrderCost = 35;
+                        rushOrderCost = rushOrdersCosts[2, 1];
                     }
                     else
                     {
-                        rushOrderCost = 40;
+                        rushOrderCost = rushOrdersCosts[2, 2];
 
                     }
                     break;
@@ -296,13 +299,7 @@ namespace Megadesk
                 throw new ApplicationException("The file cannot be opened", e);
             }
 
-            //print array
 
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                    MessageBox.Show("[" + i + "," + j + "]-> " + arrayRushOrders[i, j]);
-            }
 
             return arrayRushOrders;
 
