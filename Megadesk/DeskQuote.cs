@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.IO;
+using System.Windows.Forms;
 
 namespace Megadesk
 {
@@ -121,38 +122,7 @@ namespace Megadesk
         {
             string deskType = getDeskType();
             double rushOrderCost = 0;
-            //get costs values from file
-            try
-            {
-                StreamReader fileRushOrders = new StreamReader("file.txt");
-                while (fileRushOrders.EndOfStream == false)
-                {
-                    string aLine = fileRushOrders.ReadLine();
-                    //save into matrix
-                    //check a valid number with parse method
-                    try
-                    {
-                        //fill matrix
-                        deskWidthInt = int.Parse(aLine);
-                    }
-                    catch (FormatException)
-                    {
-                        MessageBox.Show("Error!\n\nThe width size has to be a numeric value", "Add Quote", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine(
-                            $"Unexpected error:  { exception.Message }");
-                    }
-                    //Console.WriteLine(aLine);
-                }
-                fileRushOrders.Close();
-            }
-            catch (Exception e)
-            {
-                throw new ApplicationException("The file cannot be opened", e);
-            }
-            //--
+
             switch (this.rushDays)
             {
                 case 3:
@@ -271,6 +241,72 @@ namespace Megadesk
             totalPrice = costSize + costDrawers + costMaterial + costRushOrder;
             return totalPrice;
 
+        }
+        /*
+        * the getRushOrder method
+        * Purpose: to obtain the prices from a file
+        * author: Antonio Lefiñir
+        * create date:  5 may 2020
+        */
+        public int[,] getRushOrder()
+        {
+            //declare array and index
+            int[,] arrayRushOrders = new int[3, 3];
+            int xIndex = 0;
+            int yIndex = 0;
+            //get costs values from file
+            try
+            {
+                //create file link
+                StreamReader fileRushOrders = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "rushOrderPrices.txt");
+                while (fileRushOrders.EndOfStream == false)
+                {
+                    string aLine = fileRushOrders.ReadLine();
+                    //save into matrix
+                    //check a valid number with parse method
+                    try
+                    {
+                        //fill matrix
+                        arrayRushOrders[xIndex, yIndex] = int.Parse(aLine);
+                        yIndex++;
+
+                        if (yIndex > 2)
+                        {
+                            yIndex = 0;
+                            xIndex++;
+                        }
+
+
+                    }
+                    catch (FormatException)
+                    {
+                        //MessageBox.Show("Error!\n\nThe width size has to be a numeric value", "Add Quote", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(
+                            $"Unexpected error:  { exception.Message }");
+                    }
+
+                }
+                fileRushOrders.Close();
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("The file cannot be opened", e);
+            }
+
+            //print array
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                    MessageBox.Show("[" + i + "," + j + "]-> " + arrayRushOrders[i, j]);
+            }
+
+            return arrayRushOrders;
+
+            //--
         }
 
 
