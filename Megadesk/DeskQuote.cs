@@ -121,6 +121,24 @@ namespace Megadesk
         {
             string deskType = getDeskType();
             double rushOrderCost = 0;
+            //get costs values from file
+            try
+            {
+                StreamReader fileRushOrders = new StreamReader("file.txt");
+                while (fileRushOrders.EndOfStream == false)
+                {
+                    string aLine = fileRushOrders.ReadLine();
+                    //save into matrix
+
+                    //Console.WriteLine(aLine);
+                }
+                fileRushOrders.Close();
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("The file cannot be opened", e);
+            }
+            //--
             switch (this.rushDays)
             {
                 case 3:
