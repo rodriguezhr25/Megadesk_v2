@@ -129,7 +129,21 @@ namespace Megadesk
                 {
                     string aLine = fileRushOrders.ReadLine();
                     //save into matrix
-
+                    //check a valid number with parse method
+                    try
+                    {
+                        //fill matrix
+                        deskWidthInt = int.Parse(aLine);
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Error!\n\nThe width size has to be a numeric value", "Add Quote", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(
+                            $"Unexpected error:  { exception.Message }");
+                    }
                     //Console.WriteLine(aLine);
                 }
                 fileRushOrders.Close();
