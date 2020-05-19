@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.IO;
+using System.Windows.Forms;
 
 namespace Megadesk
 {
@@ -114,58 +115,68 @@ namespace Megadesk
         /*
         * the getRushDaysPrice method
         * Purpose: to compute total cost for the shipping
+        * author: Hector Rodriguez // Antonio Lefiñir
+        * create date:  5 may 2020
         */
         public double getRushDaysPrice()
         {
             string deskType = getDeskType();
             double rushOrderCost = 0;
-            switch (this.rushDays)
+
+            //obtain the costs of the rush order from file
+            int[,] arrayOrdersCosts = getRushOrder();
+
+            //!!ATTENTION if an error has occurred the array returns null
+            if (arrayOrdersCosts != null)
             {
-                case 3:
-                    if (deskType == "small")
-                    {
-                        rushOrderCost = 60;
-                    }
-                    else if (deskType == "medium")
-                    {
-                        rushOrderCost = 70;
-                    }
-                    else
-                    {
-                        rushOrderCost = 80;
+                switch (this.rushDays)
+                {
+                    case 3:
+                        if (deskType == "small")
+                        {
+                            rushOrderCost = arrayOrdersCosts[0, 0];
+                        }
+                        else if (deskType == "medium")
+                        {
+                            rushOrderCost = arrayOrdersCosts[0, 1];
+                        }
+                        else
+                        {
+                            rushOrderCost = arrayOrdersCosts[0, 2];
 
-                    }
-                    break;
-                case 5:
-                    if (deskType == "small")
-                    {
-                        rushOrderCost = 40;
-                    }
-                    else if (deskType == "medium")
-                    {
-                        rushOrderCost = 50;
-                    }
-                    else
-                    {
-                        rushOrderCost = 60;
+                        }
+                        break;
+                    case 5:
+                        if (deskType == "small")
+                        {
+                            rushOrderCost = arrayOrdersCosts[1, 0];
+                        }
+                        else if (deskType == "medium")
+                        {
+                            rushOrderCost = arrayOrdersCosts[1, 1];
+                        }
+                        else
+                        {
+                            rushOrderCost = arrayOrdersCosts[1, 2];
 
-                    }
-                    break;
-                case 7:
-                    if (deskType == "small")
-                    {
-                        rushOrderCost = 30;
-                    }
-                    else if (deskType == "medium")
-                    {
-                        rushOrderCost = 35;
-                    }
-                    else
-                    {
-                        rushOrderCost = 40;
+                        }
+                        break;
+                    case 7:
+                        if (deskType == "small")
+                        {
+                            rushOrderCost = arrayOrdersCosts[2, 0];
+                        }
+                        else if (deskType == "medium")
+                        {
+                            rushOrderCost = arrayOrdersCosts[2, 1];
+                        }
+                        else
+                        {
+                            rushOrderCost = arrayOrdersCosts[2, 2];
 
-                    }
-                    break;
+                        }
+                        break;
+                }
 
             }
             return rushOrderCost;
@@ -236,6 +247,65 @@ namespace Megadesk
             
             totalPrice = costSize + costDrawers + costMaterial + costRushOrder;
             return totalPrice;
+
+        }
+        /*
+        * the getRushOrder method
+        * Purpose: to obtain the prices from a file
+        * author: Antonio Lefiñir
+        * create date:  5 may 2020
+        */
+        public int[,] getRushOrder()
+        {
+            //declare array and index
+            int[,] arrayRushOrders = new int[3, 3];
+            int xIndex = 0;
+            int yIndex = 0;
+            //get costs values from file
+            try
+            {
+                //create file link
+                StreamReader fileRushOrders = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "rushOrderPrices.txt");
+                while (fileRushOrders.EndOfStream == false)
+                {
+                    string aLine = fileRushOrders.ReadLine();
+                    //save into matrix
+                    //check a valid number with parse method
+                    try
+                    {
+                        //fill matrix
+                        arrayRushOrders[xIndex, yIndex] = int.Parse(aLine);
+                        yIndex++;
+
+                        if (yIndex > 2)
+                        {
+                            yIndex = 0;
+                            xIndex++;
+                        }
+                        fileRushOrders.Close();
+
+                    }
+                    catch (FormatException)
+                    {                        
+                        return null;
+                    }
+                    catch (Exception exception)
+                    {
+                        return null;
+                    }
+
+                }
+                fileRushOrders.Close();
+            }
+            catch (Exception e)
+            {
+                return null;
+                //throw new ApplicationException("The file cannot be opened", e);
+                
+            }
+
+            //if an error has occurred the array returns null
+            return arrayRushOrders;
 
         }
 

@@ -40,7 +40,7 @@
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.cancel = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.desktopMaterialComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -107,10 +107,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lora", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label1.Location = new System.Drawing.Point(28, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 30);
+            this.label1.Size = new System.Drawing.Size(134, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Search Quote";
             // 
@@ -119,7 +119,7 @@
             this.cancel.BackColor = System.Drawing.Color.IndianRed;
             this.cancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cancel.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.Location = new System.Drawing.Point(793, 442);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(151, 43);
@@ -128,27 +128,22 @@
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // comboBox1
+            // desktopMaterialComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Laminate",
-            "Oak",
-            "Rosewood",
-            "Veneer",
-            "Pine"});
-            this.comboBox1.Location = new System.Drawing.Point(175, 78);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 21);
-            this.comboBox1.TabIndex = 22;
+            this.desktopMaterialComboBox.AccessibleDescription = "";
+            this.desktopMaterialComboBox.FormattingEnabled = true;
+            this.desktopMaterialComboBox.Location = new System.Drawing.Point(175, 78);
+            this.desktopMaterialComboBox.Name = "desktopMaterialComboBox";
+            this.desktopMaterialComboBox.Size = new System.Drawing.Size(169, 21);
+            this.desktopMaterialComboBox.TabIndex = 22;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Lora", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label6.Location = new System.Drawing.Point(108, 80);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 19);
+            this.label6.Size = new System.Drawing.Size(64, 15);
             this.label6.TabIndex = 21;
             this.label6.Text = "Material:";
             // 
@@ -157,7 +152,7 @@
             this.save.BackColor = System.Drawing.Color.LightGreen;
             this.save.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.save.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.save.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.save.Location = new System.Drawing.Point(365, 66);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(151, 43);
@@ -171,7 +166,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 509);
             this.Controls.Add(this.save);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.desktopMaterialComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.dataGridView1);
@@ -182,6 +177,7 @@
             this.Name = "SearchQuotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchQuote";
+            this.Load += new System.EventHandler(this.SearchQuotes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -193,7 +189,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox desktopMaterialComboBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nro;
