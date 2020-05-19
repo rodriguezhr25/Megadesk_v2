@@ -80,6 +80,7 @@ namespace Megadesk
         {
             try
             {
+
                 double width = double.Parse(txtWidth.Text);
                 double depth = double.Parse(txtDepth.Text);
                 int drawers = Convert.ToInt32(numDrawers.Value);
@@ -109,19 +110,62 @@ namespace Megadesk
                 string customer = quote.getCustomerName();
                 string strDateQuote = quote.getQuoteDate().ToString();
 
+  
+            
+              
+
                 DisplayQuote displayQuote = new DisplayQuote(totalSize, overage, sizeCost, drawerCost, materialCost, shippingCost, total, materialUsed, shippingMethod,customer,strDateQuote);
-                string path = App + "/data/quotes.json";
-                JObject quotesData = JObject.Parse(File.ReadAllText(path));
-                var list = JsonConvert.DeserializeObject<List<Dictionary<String, String>>>(quotesData.ToString());
-                //list.Add(new Dictionary<string, string>("Text", "Test"));
+
+              
+                string pathSave = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"data\quotes.json");
+                string path = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"data\quotes.json");
+                string json = File.ReadAllText(path);
+                var jsonObj = JObject.Parse(json);
+
+                //Count how many quotes are in the file and create Array with existing quotes
+                var quoteArray = jsonObj.GetValue("quotes") as JArray;
+                int count = quoteArray.Count;
+
+                //Add new quote to Dictionary
+                Dictionary<string, Object> quoteData = new Dictionary<string, Object>();
+                quoteData.Add("id", count + 1);
+                quoteData.Add("customer", customer);
+
+                string jsonIsoDate = JsonConvert.SerializeObject(quote.getQuoteDate());           
+           
+                quoteData.Add("dateQuote", jsonIsoDate);
+                quoteData.Add("costSize", sizeCost);
+                quoteData.Add("totalSize", totalSize);
+                quoteData.Add("sizeOverage", overage);
+                quoteData.Add("drawerCost", drawerCost);
+                quoteData.Add("material", materialUsed);
+                quoteData.Add("materialCost", materialCost);
+                quoteData.Add("shippingMethod", shippingMethod);
+                quoteData.Add("shippingCost", shippingCost);
+                quoteData.Add("total", total);
+                List<Dictionary<String, Object>> _data = new List<Dictionary<String, Object>>();
+                _data.Add(new Dictionary<String, Object>(quoteData));
+
+
+                //Convert Dictionary to JsonObject
+                var newJsonQuote = JsonConvert.SerializeObject(_data[0], Formatting.Indented);
+                var newQuote = JObject.Parse(newJsonQuote);
+                //Add new quote to array
+                quoteArray.Add(newQuote);
+                jsonObj["quotes"] = quoteArray;
+                //Saving file with new Json
+                string newJsonResult = JsonConvert.SerializeObject(jsonObj,Formatting.Indented);
+                File.WriteAllText(pathSave, newJsonResult);
+              
 
                 displayQuote.Tag = quote;
   
                 displayQuote.Show(this);
                 Hide();
-            }catch (Exception ex)
+            }catch (DirectoryNotFoundException)
             {
-            
+                // Let the user know that the directory did not exist.     
+                MessageBox.Show("Directory not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void txtWidth_Validating(object sender, CancelEventArgs e)

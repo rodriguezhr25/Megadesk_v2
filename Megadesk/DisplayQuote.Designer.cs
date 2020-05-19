@@ -430,7 +430,7 @@
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(151, 43);
             this.save.TabIndex = 14;
-            this.save.Text = "Save";
+            this.save.Text = "Ok";
             this.save.UseVisualStyleBackColor = false;
             this.save.Click += new System.EventHandler(this.save_Click);
             // 

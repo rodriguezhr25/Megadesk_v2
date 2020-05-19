@@ -107,6 +107,9 @@
     <EmbeddedResource Include="ViewAllQuotes.resx">
       <DependentUpon>ViewAllQuotes.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="data\quotes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AddQuote.datasource" />
     <None Include="Properties\DataSources\Desk.datasource" />
@@ -131,5 +134,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

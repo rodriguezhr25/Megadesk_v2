@@ -48,26 +48,11 @@ namespace Megadesk
 
         private void save_Click(object sender, EventArgs e)
         {
-            //AddQuote addQuote = new AddQuote();
-            //addQuote.Tag = this;
-            //addQuote.Show(this);
-            //Hide();
-          
-            //JObject quotesData = JObject.Parse(File.ReadAllText(path));
-            //var list = JsonConvert.DeserializeObject<List<DeskQuote>>(quotesData);
+            AddQuote addQuote = new AddQuote();
+            addQuote.Tag = this;
+            addQuote.Show(this);
+            Hide();
 
-            try
-            {
-                string path = Path.GetDirectoryName(Application.ExecutablePath) + "/data/quotes.json";
-                JObject quotesData = JObject.Parse(File.ReadAllText(path));       
-                var list = JsonConvert.DeserializeObject<List<Dictionary<String, String>>>(quotesData.ToString());
-                //list.Add(new Dictionary<string, string>("Text", "Test"));
-              
-            }
-            catch (Exception EX) { 
-
-
-            }
         }
 
         private void txtCustomer_Click(object sender, EventArgs e)

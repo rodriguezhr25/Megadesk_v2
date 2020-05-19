@@ -56,12 +56,12 @@
             this.saveQuote.BackColor = System.Drawing.Color.LightGreen;
             this.saveQuote.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.saveQuote.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveQuote.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveQuote.Location = new System.Drawing.Point(39, 409);
             this.saveQuote.Name = "saveQuote";
             this.saveQuote.Size = new System.Drawing.Size(151, 43);
             this.saveQuote.TabIndex = 8;
-            this.saveQuote.Text = "Quote";
+            this.saveQuote.Text = "Save";
             this.saveQuote.UseVisualStyleBackColor = false;
             this.saveQuote.Click += new System.EventHandler(this.save_Click);
             // 
@@ -70,7 +70,7 @@
             this.cancel.BackColor = System.Drawing.Color.IndianRed;
             this.cancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cancel.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.Location = new System.Drawing.Point(196, 409);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(151, 43);
@@ -94,7 +94,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtCustomerName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Lora", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.groupBox1.Location = new System.Drawing.Point(30, 35);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(328, 341);
@@ -113,7 +113,7 @@
             "NORMAL 14 DAYS"});
             this.cboRushOption.Location = new System.Drawing.Point(120, 240);
             this.cboRushOption.Name = "cboRushOption";
-            this.cboRushOption.Size = new System.Drawing.Size(169, 28);
+            this.cboRushOption.Size = new System.Drawing.Size(169, 24);
             this.cboRushOption.TabIndex = 7;
             this.cboRushOption.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -128,15 +128,15 @@
             "Pine"});
             this.cboMaterial.Location = new System.Drawing.Point(120, 199);
             this.cboMaterial.Name = "cboMaterial";
-            this.cboMaterial.Size = new System.Drawing.Size(169, 28);
+            this.cboMaterial.Size = new System.Drawing.Size(169, 24);
             this.cboMaterial.TabIndex = 6;
             // 
             // txtDepth
             // 
-            this.txtDepth.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtDepth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.txtDepth.Location = new System.Drawing.Point(120, 125);
             this.txtDepth.Name = "txtDepth";
-            this.txtDepth.Size = new System.Drawing.Size(169, 21);
+            this.txtDepth.Size = new System.Drawing.Size(169, 20);
             this.txtDepth.TabIndex = 3;
             this.txtDepth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDepth_KeyPress);
             this.txtDepth.Validating += new System.ComponentModel.CancelEventHandler(this.txtDepth_Validating);
@@ -144,10 +144,10 @@
             // 
             // txtWidth
             // 
-            this.txtWidth.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.txtWidth.Location = new System.Drawing.Point(120, 86);
             this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Size = new System.Drawing.Size(169, 21);
+            this.txtWidth.Size = new System.Drawing.Size(169, 20);
             this.txtWidth.TabIndex = 2;
             this.txtWidth.Validating += new System.ComponentModel.CancelEventHandler(this.txtWidth_Validating);
             this.txtWidth.Validated += new System.EventHandler(this.txtWidth_Validated);
@@ -155,20 +155,20 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Lora", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label13.Location = new System.Drawing.Point(6, 244);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(104, 19);
+            this.label13.Size = new System.Drawing.Size(111, 15);
             this.label13.TabIndex = 12;
             this.label13.Text = "Shiping options:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Lora", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label6.Location = new System.Drawing.Point(46, 208);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 19);
+            this.label6.Size = new System.Drawing.Size(64, 15);
             this.label6.TabIndex = 10;
             this.label6.Text = "Material:";
             // 
@@ -181,55 +181,55 @@
             0,
             0});
             this.numDrawers.Name = "numDrawers";
-            this.numDrawers.Size = new System.Drawing.Size(169, 24);
+            this.numDrawers.Size = new System.Drawing.Size(169, 23);
             this.numDrawers.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Lora", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label5.Location = new System.Drawing.Point(46, 170);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 19);
+            this.label5.Size = new System.Drawing.Size(68, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = "Drawers: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lora", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label3.Location = new System.Drawing.Point(34, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 19);
+            this.label3.Size = new System.Drawing.Size(79, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "Depth (in) :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lora", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label2.Location = new System.Drawing.Point(33, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
+            this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Width (in) :";
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.txtCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.txtCustomerName.Location = new System.Drawing.Point(120, 37);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(169, 21);
+            this.txtCustomerName.Size = new System.Drawing.Size(169, 20);
             this.txtCustomerName.TabIndex = 1;
             this.txtCustomerName.TextChanged += new System.EventHandler(this.customerName_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lora", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.label1.Location = new System.Drawing.Point(7, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 19);
+            this.label1.Size = new System.Drawing.Size(110, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer Name";
             // 
