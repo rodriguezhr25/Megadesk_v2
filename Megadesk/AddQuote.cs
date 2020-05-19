@@ -9,6 +9,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
 
 namespace Megadesk
 {
@@ -106,7 +110,10 @@ namespace Megadesk
                 string strDateQuote = quote.getQuoteDate().ToString();
 
                 DisplayQuote displayQuote = new DisplayQuote(totalSize, overage, sizeCost, drawerCost, materialCost, shippingCost, total, materialUsed, shippingMethod,customer,strDateQuote);
-                
+                string path = App + "/data/quotes.json";
+                JObject quotesData = JObject.Parse(File.ReadAllText(path));
+                var list = JsonConvert.DeserializeObject<List<Dictionary<String, String>>>(quotesData.ToString());
+                //list.Add(new Dictionary<string, string>("Text", "Test"));
 
                 displayQuote.Tag = quote;
   
@@ -114,7 +121,7 @@ namespace Megadesk
                 Hide();
             }catch (Exception ex)
             {
-
+            
             }
         }
         private void txtWidth_Validating(object sender, CancelEventArgs e)
