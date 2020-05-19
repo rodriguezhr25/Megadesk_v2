@@ -17,6 +17,8 @@ namespace Megadesk
             InitializeComponent();
         }
 
+        List<DesktopMaterial> materials = new List<DesktopMaterial>();
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -29,5 +31,16 @@ namespace Megadesk
             mainMenu.Show(this);
             Hide();
         }
+
+        private void SearchQuotes_Load(object sender, EventArgs e)
+        {
+            foreach (DesktopMaterial item in Enum.GetValues(typeof(DesktopMaterial)))
+            {
+                materials.Add(item);
+            }
+            desktopMaterialComboBox.DataSource = materials;
+            desktopMaterialComboBox.Text = "Select";
+        }
     }
+        
 }
