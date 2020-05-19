@@ -109,14 +109,8 @@ namespace Megadesk
                 string shippingMethod = cboRushOption.Text;
                 string customer = quote.getCustomerName();
                 string strDateQuote = quote.getQuoteDate().ToString();
-
-  
-            
-              
-
-                DisplayQuote displayQuote = new DisplayQuote(totalSize, overage, sizeCost, drawerCost, materialCost, shippingCost, total, materialUsed, shippingMethod,customer,strDateQuote);
-
-              
+                          
+                                          
                 string pathSave = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"data\quotes.json");
                 string path = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"data\quotes.json");
                 string json = File.ReadAllText(path);
@@ -156,10 +150,9 @@ namespace Megadesk
                 //Saving file with new Json
                 string newJsonResult = JsonConvert.SerializeObject(jsonObj,Formatting.Indented);
                 File.WriteAllText(pathSave, newJsonResult);
-              
-
-                displayQuote.Tag = quote;
-  
+                //Display quote
+                DisplayQuote displayQuote = new DisplayQuote(totalSize, overage, sizeCost, drawerCost, materialCost, shippingCost, total, materialUsed, shippingMethod, customer, strDateQuote);
+                displayQuote.Tag = quote;  
                 displayQuote.Show(this);
                 Hide();
             }catch (DirectoryNotFoundException)
