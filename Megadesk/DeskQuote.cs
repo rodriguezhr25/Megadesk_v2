@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace Megadesk
 {
+    
     class DeskQuote
     {
         private DateTime quoteDate;
@@ -102,7 +103,7 @@ namespace Megadesk
             {
                 type = "small";
             }
-            else if(deskSize > 1000)
+            else if(deskSize < 2001)
             {
                 type = "medium";
             }
