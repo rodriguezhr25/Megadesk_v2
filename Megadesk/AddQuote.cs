@@ -65,7 +65,13 @@ namespace Megadesk
 
         private void AddQuote_Load(object sender, EventArgs e)
         {
-
+            List<DesktopMaterial> materials = new List<DesktopMaterial>();
+            foreach (DesktopMaterial item in Enum.GetValues(typeof(DesktopMaterial)))
+            {
+                materials.Add(item);
+            }
+            cboMaterial.DataSource = materials;
+            cboMaterial.Text = "Select";
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -239,6 +245,9 @@ namespace Megadesk
             errorProvider.SetError(txtDepth, "");
         }
 
-     
+        private void cboMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

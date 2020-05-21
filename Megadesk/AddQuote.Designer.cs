@@ -120,16 +120,11 @@
             // cboMaterial
             // 
             this.cboMaterial.FormattingEnabled = true;
-            this.cboMaterial.Items.AddRange(new object[] {
-            "Laminate",
-            "Oak",
-            "Rosewood",
-            "Veneer",
-            "Pine"});
             this.cboMaterial.Location = new System.Drawing.Point(120, 199);
             this.cboMaterial.Name = "cboMaterial";
             this.cboMaterial.Size = new System.Drawing.Size(169, 24);
             this.cboMaterial.TabIndex = 6;
+            this.cboMaterial.SelectedIndexChanged += new System.EventHandler(this.cboMaterial_SelectedIndexChanged);
             // 
             // txtDepth
             // 
