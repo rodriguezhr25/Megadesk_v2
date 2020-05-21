@@ -282,17 +282,20 @@ namespace Megadesk
                             yIndex = 0;
                             xIndex++;
                         }
-                        fileRushOrders.Close();
+                        //fileRushOrders.Close();
 
                     }
                     catch (FormatException)
-                    {                        
+                    {
+                        fileRushOrders.Close();
                         return null;
                     }
                     catch (Exception exception)
                     {
+                        fileRushOrders.Close();
                         return null;
                     }
+
 
                 }
                 fileRushOrders.Close();
