@@ -40,7 +40,7 @@
             this.addQuote.BackColor = System.Drawing.Color.LightGreen;
             this.addQuote.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.addQuote.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addQuote.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addQuote.Location = new System.Drawing.Point(197, 138);
             this.addQuote.Name = "addQuote";
             this.addQuote.Size = new System.Drawing.Size(182, 43);
@@ -54,7 +54,7 @@
             this.button1.BackColor = System.Drawing.Color.LightGreen;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(197, 207);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(182, 43);
@@ -68,7 +68,7 @@
             this.button2.BackColor = System.Drawing.Color.LightGreen;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(197, 275);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(182, 43);
@@ -82,7 +82,7 @@
             this.button3.BackColor = System.Drawing.Color.IndianRed;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Lora", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(197, 342);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(182, 43);

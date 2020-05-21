@@ -29,5 +29,13 @@ namespace Megadesk
             mainMenu.Show(this);
             Hide();
         }
+
+        private void ViewAllQuotes_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainMenu mainMenuP = new MainMenu();
+            //mainMenuP.Tag = this;
+            mainMenuP.Show();
+            Hide();
+        }
     }
 }

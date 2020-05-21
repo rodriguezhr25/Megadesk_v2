@@ -169,7 +169,7 @@ namespace Megadesk
             {
                 width = int.Parse(txtWidth.Text);
 
-                if(width < 24 || width > 96)
+                if(width < constraintVariables.MIN_WIDTH || width > constraintVariables.MAX_WIDTH)
                 {
                     //Cancel the event, select the text to be corrected and focus on control
                     txtWidth.SelectAll();
@@ -210,7 +210,7 @@ namespace Megadesk
             {
                 depth = int.Parse(txtDepth.Text);
 
-                if (depth < 12 || depth > 48)
+                if (depth < constraintVariables.MIN_DEPTH || depth > constraintVariables.MAX_DEPTH)
                 {
                     //Cancel the event, select the text to be corrected and focus on control
                     txtDepth.SelectAll();
@@ -239,6 +239,12 @@ namespace Megadesk
             errorProvider.SetError(txtDepth, "");
         }
 
-     
+        private void AddQuote_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainMenu mainMenuP = new MainMenu();
+            //mainMenuP.Tag = this;
+            mainMenuP.Show();
+            Hide();
+        }
     }
 }

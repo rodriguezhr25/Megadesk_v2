@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
-
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Megadesk
@@ -47,6 +45,14 @@ namespace Megadesk
             desktopMaterialComboBox.Text = "Select";
 
            
+        }
+
+        private void SearchQuotes_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainMenu mainMenuP = new MainMenu();
+            //mainMenuP.Tag = this;
+            mainMenuP.Show();
+            Hide();
         }
     }
         

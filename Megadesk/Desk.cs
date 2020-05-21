@@ -19,16 +19,22 @@ namespace Megadesk
     {
         public DesktopMaterial materials;
     }
+
+    public static class constraintVariables 
+    {
+        public const double MIN_WIDTH = 24;
+        public const double MAX_WIDTH = 96;
+        public const double MIN_DEPTH = 12;
+        public const double MAX_DEPTH = 48;
+
+    }
     class Desk
     {
         private double width;
         private double depth;
         private int drawers;
         private string material;
-        public const double MIN_WIDTH = 24;
-        public const double MAX_WIDTH = 96;
-        public const double MIN_DEPTH = 12;
-        public const double MAX_DEPTH = 48;
+        
 
         //default constructor of Desk object
         public Desk()
@@ -106,5 +112,25 @@ namespace Megadesk
         {
             return this.material;
         }
+
+        public double getMIN_WIDTH() 
+        {
+            return constraintVariables.MIN_WIDTH;
+        }
+
+        public double getMAX_WIDTH()
+        {
+            return constraintVariables.MAX_WIDTH;
+        }
+
+        public double getMIN_DEPTH()
+        {
+            return constraintVariables.MIN_DEPTH;
+        }
+        public double getMAX_DEPTH()
+        {
+            return constraintVariables.MAX_DEPTH;
+        }
+
     }
 }
