@@ -29,5 +29,12 @@ namespace Megadesk
             mainMenu.Show(this);
             Hide();
         }
+
+        private void ViewAllQuotes_Load(object sender, EventArgs e)
+        {
+            //bind datagrid with datatable
+            dataGridAllQuotes.DataSource = DeskQuote.getAllQuotes();
+
+        }
     }
 }

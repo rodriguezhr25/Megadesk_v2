@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.Data;
+//using System.Date;
+
 
 namespace Megadesk
 {
@@ -313,6 +317,47 @@ namespace Megadesk
 
         }
 
+        /*
+        * the etAllQuotes method
+        * Purpose: to obtain all quotes from json file
+        * author: Antonio Lefiñir
+        * create date:  22 may 2020
+        */
+        public static DataTable getAllQuotes()
+        {
+            //obtain file information
+            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json" );
+
+            //convert the string to datatable
+            var table = JsonConvert.DeserializeObject<DataSet>(initialJson);
+
+            //formating table
+
+            //change date format to shortdate
+            for (int i = 0; i < table.Tables[0].Rows.Count; i++)
+            {
+                table.Tables[0].Rows[i]["dateQuote"]  = table.Tables[0].Rows[i]["dateQuote"].ToString().Substring(1, 10);                
+            }
+
+            //set column names
+            table.Tables[0].Columns[0].ColumnName = "Id";
+            table.Tables[0].Columns[1].ColumnName = "Customer Name";
+            table.Tables[0].Columns[2].ColumnName = "Cost Size ($)";
+            table.Tables[0].Columns[3].ColumnName = "Size (inch)";
+            table.Tables[0].Columns[4].ColumnName = "Total Size (inch)";
+            table.Tables[0].Columns[5].ColumnName = "Size Average (inch)";
+            table.Tables[0].Columns[6].ColumnName = "Drawers Cost";
+            table.Tables[0].Columns[7].ColumnName = "Material";
+            table.Tables[0].Columns[8].ColumnName = "Material Cost";
+            table.Tables[0].Columns[9].ColumnName = "Shipping";
+            table.Tables[0].Columns[10].ColumnName = "Shipping Cost";
+            table.Tables[0].Columns[11].ColumnName = "Total Cost ($)";
+
+
+            //return table
+            return table.Tables[0];
+
+        }
 
     }
 }
