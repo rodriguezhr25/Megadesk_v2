@@ -15,10 +15,7 @@ namespace Megadesk
         ,Veneer
         ,Pine
     };
-   struct DeskProperties
-    {
-        public DesktopMaterial materials;
-    }
+   
     class Desk
     {
         private double width;

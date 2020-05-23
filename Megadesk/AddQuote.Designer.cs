@@ -101,30 +101,29 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Register Quote";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cboRushOption
             // 
+            this.cboRushOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRushOption.FormattingEnabled = true;
             this.cboRushOption.Items.AddRange(new object[] {
+            "NORMAL 14 DAYS",
             "RUSH 3 DAYS",
             "RUSH 5 DAYS",
-            "RUSH 7 DAYS",
-            "NORMAL 14 DAYS"});
+            "RUSH 7 DAYS"});
             this.cboRushOption.Location = new System.Drawing.Point(120, 240);
             this.cboRushOption.Name = "cboRushOption";
             this.cboRushOption.Size = new System.Drawing.Size(169, 24);
             this.cboRushOption.TabIndex = 7;
-            this.cboRushOption.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // cboMaterial
             // 
+            this.cboMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMaterial.FormattingEnabled = true;
             this.cboMaterial.Location = new System.Drawing.Point(120, 199);
             this.cboMaterial.Name = "cboMaterial";
             this.cboMaterial.Size = new System.Drawing.Size(169, 24);
             this.cboMaterial.TabIndex = 6;
-            this.cboMaterial.SelectedIndexChanged += new System.EventHandler(this.cboMaterial_SelectedIndexChanged);
             // 
             // txtDepth
             // 
@@ -178,6 +177,7 @@
             this.numDrawers.Name = "numDrawers";
             this.numDrawers.Size = new System.Drawing.Size(169, 23);
             this.numDrawers.TabIndex = 5;
+            this.numDrawers.Enter += new System.EventHandler(this.numDrawers_Enter);
             // 
             // label5
             // 
@@ -216,7 +216,6 @@
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(169, 20);
             this.txtCustomerName.TabIndex = 1;
-            this.txtCustomerName.TextChanged += new System.EventHandler(this.customerName_TextChanged);
             // 
             // label1
             // 
@@ -247,6 +246,7 @@
             this.Name = "AddQuote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddQuote";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddQuote_FormClosed);
             this.Load += new System.EventHandler(this.AddQuote_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

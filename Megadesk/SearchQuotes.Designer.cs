@@ -29,80 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchQuotes));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quoteDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.widthQuote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.depthQuote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.drawers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridSearchQuotes = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.cancel = new System.Windows.Forms.Button();
             this.desktopMaterialComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.save = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.search = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchQuotes)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridSearchQuotes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nro,
-            this.customerName,
-            this.quoteDate,
-            this.widthQuote,
-            this.depthQuote,
-            this.drawers,
-            this.material,
-            this.total});
-            this.dataGridView1.Location = new System.Drawing.Point(33, 118);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(911, 304);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Nro
-            // 
-            this.Nro.HeaderText = "Nro";
-            this.Nro.Name = "Nro";
-            // 
-            // customerName
-            // 
-            this.customerName.HeaderText = "Customer Name";
-            this.customerName.Name = "customerName";
-            // 
-            // quoteDate
-            // 
-            this.quoteDate.HeaderText = "Date";
-            this.quoteDate.Name = "quoteDate";
-            // 
-            // widthQuote
-            // 
-            this.widthQuote.HeaderText = "Width";
-            this.widthQuote.Name = "widthQuote";
-            // 
-            // depthQuote
-            // 
-            this.depthQuote.HeaderText = "Depth";
-            this.depthQuote.Name = "depthQuote";
-            // 
-            // drawers
-            // 
-            this.drawers.HeaderText = "Drawers";
-            this.drawers.Name = "drawers";
-            // 
-            // material
-            // 
-            this.material.HeaderText = "Material";
-            this.material.Name = "material";
-            // 
-            // total
-            // 
-            this.total.HeaderText = "Total cost ($)";
-            this.total.Name = "total";
+            this.dataGridSearchQuotes.AllowUserToAddRows = false;
+            this.dataGridSearchQuotes.AllowUserToDeleteRows = false;
+            this.dataGridSearchQuotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSearchQuotes.Location = new System.Drawing.Point(33, 118);
+            this.dataGridSearchQuotes.Name = "dataGridSearchQuotes";
+            this.dataGridSearchQuotes.ReadOnly = true;
+            this.dataGridSearchQuotes.Size = new System.Drawing.Size(968, 304);
+            this.dataGridSearchQuotes.TabIndex = 3;
+            this.dataGridSearchQuotes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -131,6 +77,7 @@
             // desktopMaterialComboBox
             // 
             this.desktopMaterialComboBox.AccessibleDescription = "";
+            this.desktopMaterialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.desktopMaterialComboBox.FormattingEnabled = true;
             this.desktopMaterialComboBox.Location = new System.Drawing.Point(175, 78);
             this.desktopMaterialComboBox.Name = "desktopMaterialComboBox";
@@ -147,30 +94,30 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Material:";
             // 
-            // save
+            // search
             // 
-            this.save.BackColor = System.Drawing.Color.LightGreen;
-            this.save.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.save.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save.Location = new System.Drawing.Point(365, 66);
-            this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(151, 43);
-            this.save.TabIndex = 23;
-            this.save.Text = "Search";
-            this.save.UseVisualStyleBackColor = false;
-            this.save.Click += new System.EventHandler(this.save_Click);
+            this.search.BackColor = System.Drawing.Color.LightGreen;
+            this.search.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.search.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.Location = new System.Drawing.Point(365, 66);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(151, 43);
+            this.search.TabIndex = 23;
+            this.search.Text = "Search";
+            this.search.UseVisualStyleBackColor = false;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // SearchQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 509);
-            this.Controls.Add(this.save);
+            this.Controls.Add(this.search);
             this.Controls.Add(this.desktopMaterialComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cancel);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridSearchQuotes);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -178,8 +125,9 @@
             this.Name = "SearchQuotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchQuote";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SearchQuotes_FormClosed);
             this.Load += new System.EventHandler(this.SearchQuotes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchQuotes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,19 +135,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridSearchQuotes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.ComboBox desktopMaterialComboBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button save;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quoteDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn widthQuote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn depthQuote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn drawers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.Button search;
     }
 }

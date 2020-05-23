@@ -3,12 +3,12 @@ using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Data;
-//using System.Date;
-
+using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace Megadesk
 {
-    
+
     class DeskQuote
     {
         private DateTime quoteDate;
@@ -18,7 +18,7 @@ namespace Megadesk
         private string customerName;
         private Desk desktop;
         private double deskSize;
-       
+
         public DeskQuote()
         {
 
@@ -103,11 +103,11 @@ namespace Megadesk
         {
             deskSize = getDeskSize();
             string type = "";
-            if(deskSize < 1000)
+            if (deskSize < 1000)
             {
                 type = "small";
             }
-            else if(deskSize < 2001)
+            else if (deskSize < 2001)
             {
                 type = "medium";
             }
@@ -186,16 +186,16 @@ namespace Megadesk
             }
             return rushOrderCost;
         }
-            /*
-       * the getMaterialPrice method
-       * Purpose: to compute total cost for the material used
-       */
-            public double getMaterialPrice()
-            {
+        /*
+   * the getMaterialPrice method
+   * Purpose: to compute total cost for the material used
+   */
+        public double getMaterialPrice()
+        {
             string deskMaterial = desktop.getMaterial();
-                double materialCost = 0;
-                switch (deskMaterial)
-                {
+            double materialCost = 0;
+            switch (deskMaterial)
+            {
                 case "Oak":
                     materialCost = 200;
                     break;
@@ -214,8 +214,8 @@ namespace Megadesk
 
 
             }
-                return materialCost;
-            
+            return materialCost;
+
         }
         /*
           * the getTotalPrice method
@@ -227,13 +227,13 @@ namespace Megadesk
             double surfaceExtra = 0;
 
             double sizeCost;
-           
+
             if (deskSize > 1000)
             {
                 surfaceExtra = deskSize - 1000;
             }
             sizeCost = surfaceExtra + BASE_PRICE;
-            return sizeCost;           
+            return sizeCost;
 
         }
         /*
@@ -242,14 +242,14 @@ namespace Megadesk
           */
         public double getTotalPrice()
         {
-            deskSize = getDeskSize();         
+            deskSize = getDeskSize();
             double costDrawers = getDrawersPrice();
             double costMaterial = getMaterialPrice();
             double costRushOrder = getRushDaysPrice();
             double costSize = getSizeCost();
             double totalPrice;
 
-            
+
             totalPrice = costSize + costDrawers + costMaterial + costRushOrder;
             return totalPrice;
 
@@ -309,7 +309,7 @@ namespace Megadesk
             {
                 return null;
                 //throw new ApplicationException("The file cannot be opened", e);
-                
+
             }
 
             //if an error has occurred the array returns null
@@ -318,7 +318,7 @@ namespace Megadesk
         }
 
         /*
-        * the etAllQuotes method
+        * the getAllQuotes method
         * Purpose: to obtain all quotes from json file
         * author: Antonio Lefiñir
         * create date:  22 may 2020
@@ -326,7 +326,7 @@ namespace Megadesk
         public static DataTable getAllQuotes()
         {
             //obtain file information
-            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json" );
+            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json");
 
             //convert the string to datatable
             var table = JsonConvert.DeserializeObject<DataSet>(initialJson);
@@ -336,16 +336,16 @@ namespace Megadesk
             //change date format to shortdate
             for (int i = 0; i < table.Tables[0].Rows.Count; i++)
             {
-                table.Tables[0].Rows[i]["dateQuote"]  = table.Tables[0].Rows[i]["dateQuote"].ToString().Substring(1, 10);                
+                table.Tables[0].Rows[i]["dateQuote"] = table.Tables[0].Rows[i]["dateQuote"].ToString().Substring(1, 10);
             }
 
             //set column names
             table.Tables[0].Columns[0].ColumnName = "Id";
             table.Tables[0].Columns[1].ColumnName = "Customer Name";
-            table.Tables[0].Columns[2].ColumnName = "Cost Size ($)";
-            table.Tables[0].Columns[3].ColumnName = "Size (inch)";
+            table.Tables[0].Columns[2].ColumnName = "Quote Date";
+            table.Tables[0].Columns[3].ColumnName = "Cost Size ($)";
             table.Tables[0].Columns[4].ColumnName = "Total Size (inch)";
-            table.Tables[0].Columns[5].ColumnName = "Size Average (inch)";
+            table.Tables[0].Columns[5].ColumnName = "Size Overage (inch)";
             table.Tables[0].Columns[6].ColumnName = "Drawers Cost";
             table.Tables[0].Columns[7].ColumnName = "Material";
             table.Tables[0].Columns[8].ColumnName = "Material Cost";
@@ -358,6 +358,59 @@ namespace Megadesk
             return table.Tables[0];
 
         }
+        /*
+       * the getAllQuotesMaterial method
+       * Purpose: To search quotes saved with especific material
+       * author: Hector Rodriguez 
+       * create date:  22 may 2020
+       */
+        public static DataTable getAllQuotesMaterial(string material)
+        {
+            //obtain file information
+            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json");       
+  
+            DataSet dataSet = JsonConvert.DeserializeObject<DataSet>(initialJson);
+          
+
+            DataTable dataTable = dataSet.Tables["quotes"];
+         
+            // Query to filter data
+            string query;
+            query = "material = '" + material + "'";
+            // Use the Select method to find all rows matching the filter.
+            DataRow[] rows = dataTable.Select(query);
+            DataTable dataFiltered = new DataTable();
+            if (rows.Length > 0)//check is there are rows
+            {
+                ////change date format to shortdate
+                foreach (DataRow item in rows)
+                {
+                    item["dateQuote"] = item["dateQuote"].ToString().Substring(1, 10);
+                }
+                dataFiltered = rows.CopyToDataTable();
+
+                ////set column names
+                dataFiltered.Columns[0].ColumnName = "Id";
+                dataFiltered.Columns[1].ColumnName = "Customer Name";
+                dataFiltered.Columns[2].ColumnName = "Quote Date";
+                dataFiltered.Columns[3].ColumnName = "Cost Size ($)";
+                dataFiltered.Columns[4].ColumnName = "Total Size (inch)";
+                dataFiltered.Columns[5].ColumnName = "Size Overage (inch)";
+                dataFiltered.Columns[6].ColumnName = "Drawers Cost";
+                dataFiltered.Columns[7].ColumnName = "Material";
+                dataFiltered.Columns[8].ColumnName = "Material Cost";
+                dataFiltered.Columns[9].ColumnName = "Shipping";
+                dataFiltered.Columns[10].ColumnName = "Shipping Cost";
+                dataFiltered.Columns[11].ColumnName = "Total Cost ($)";
+            }
+            return dataFiltered;
+
+
+
+        }
+
+
+
 
     }
 }
