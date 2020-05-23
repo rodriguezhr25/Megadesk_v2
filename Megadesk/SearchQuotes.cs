@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
-
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Megadesk
@@ -51,7 +49,8 @@ namespace Megadesk
 
         private void save_Click(object sender, EventArgs e)
         {
-
+            //bind datagrid with datatable
+            dataGridSearchQuotes.DataSource = DeskQuote.getAllQuotes();
         }
     }
         

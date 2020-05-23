@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchQuotes));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridSearchQuotes = new System.Windows.Forms.DataGridView();
             this.Nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quoteDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,13 +43,13 @@
             this.desktopMaterialComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.save = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchQuotes)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridSearchQuotes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridSearchQuotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSearchQuotes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nro,
             this.customerName,
             this.quoteDate,
@@ -58,11 +58,11 @@
             this.drawers,
             this.material,
             this.total});
-            this.dataGridView1.Location = new System.Drawing.Point(33, 118);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(911, 304);
-            this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridSearchQuotes.Location = new System.Drawing.Point(33, 118);
+            this.dataGridSearchQuotes.Name = "dataGridSearchQuotes";
+            this.dataGridSearchQuotes.Size = new System.Drawing.Size(911, 304);
+            this.dataGridSearchQuotes.TabIndex = 3;
+            this.dataGridSearchQuotes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Nro
             // 
@@ -170,7 +170,7 @@
             this.Controls.Add(this.desktopMaterialComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cancel);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridSearchQuotes);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -179,7 +179,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchQuote";
             this.Load += new System.EventHandler(this.SearchQuotes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchQuotes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,7 +187,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridSearchQuotes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.ComboBox desktopMaterialComboBox;
