@@ -30,10 +30,19 @@ namespace Megadesk
             Hide();
         }
 
+
+        private void ViewAllQuotes_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainMenu mainMenuP = new MainMenu();
+            //mainMenuP.Tag = this;
+            mainMenuP.Show();
+            Hide();
+
         private void ViewAllQuotes_Load(object sender, EventArgs e)
         {
             //bind datagrid with datatable
             dataGridAllQuotes.DataSource = DeskQuote.getAllQuotes();
+
 
         }
     }

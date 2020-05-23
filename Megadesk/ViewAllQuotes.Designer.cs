@@ -82,8 +82,13 @@
             this.Name = "ViewAllQuotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quotes";
+
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewAllQuotes_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+
             this.Load += new System.EventHandler(this.ViewAllQuotes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllQuotes)).EndInit();
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

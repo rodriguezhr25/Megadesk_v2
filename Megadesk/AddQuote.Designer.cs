@@ -124,7 +124,7 @@
             this.cboMaterial.Name = "cboMaterial";
             this.cboMaterial.Size = new System.Drawing.Size(169, 24);
             this.cboMaterial.TabIndex = 6;
-            this.cboMaterial.SelectedIndexChanged += new System.EventHandler(this.cboMaterial_SelectedIndexChanged);
+            //this.cboMaterial.SelectedIndexChanged += new System.EventHandler(this.cboMaterial_SelectedIndexChanged);
             // 
             // txtDepth
             // 
@@ -247,6 +247,7 @@
             this.Name = "AddQuote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddQuote";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddQuote_FormClosed);
             this.Load += new System.EventHandler(this.AddQuote_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

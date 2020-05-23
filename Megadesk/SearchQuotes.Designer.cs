@@ -178,6 +178,7 @@
             this.Name = "SearchQuotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchQuote";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SearchQuotes_FormClosed);
             this.Load += new System.EventHandler(this.SearchQuotes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchQuotes)).EndInit();
             this.ResumeLayout(false);
