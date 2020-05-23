@@ -26,11 +26,7 @@ namespace Megadesk
             }
             cboMaterial.DataSource = materials;
      
-                 foreach (DesktopMaterial item in Enum.GetValues(typeof(DesktopMaterial)))
-            {
-                materials.Add(item);
-            }
-            cboMaterial.DataSource = materials;
+                
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -52,13 +48,7 @@ namespace Megadesk
                 int drawers = Convert.ToInt32(numDrawers.Value);
                 string material = cboMaterial.Text;
                 string customerName = txtCustomerName.Text;
-                if (material.CompareTo("Select") == 0 )
-                {
-                    MessageBox.Show("Please enter a value to textBox1!");
-                    return;
-                }
-                else
-                {
+                
                     DateTime dateQuote = DateTime.Now;
                     int rushDays = int.Parse(cboRushOption.Text.Split(' ')[1]);
                     Desk desktop = new Desk(width, depth, drawers, material);
@@ -128,7 +118,6 @@ namespace Megadesk
                     displayQuote.Tag = quote;
                     displayQuote.Show(this);
                     Hide();
-                }
             } catch (DirectoryNotFoundException)
             {                // Let the user know that the directory did not exist.     
                 MessageBox.Show("Directory not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -142,6 +131,11 @@ namespace Megadesk
             {
                 // Let the user know that the data is incorrect   
                 MessageBox.Show("Select a valid option for shipping", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (JsonReaderException)
+            {
+                // Let the user know that the json is corrupted   
+                MessageBox.Show("The Json file is corrupted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void txtWidth_Validating(object sender, CancelEventArgs e)

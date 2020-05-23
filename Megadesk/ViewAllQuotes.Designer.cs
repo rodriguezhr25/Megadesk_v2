@@ -61,6 +61,8 @@
             // 
             // dataGridAllQuotes
             // 
+            this.dataGridAllQuotes.AllowUserToAddRows = false;
+            this.dataGridAllQuotes.AllowUserToDeleteRows = false;
             this.dataGridAllQuotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridAllQuotes.Location = new System.Drawing.Point(43, 95);
             this.dataGridAllQuotes.Name = "dataGridAllQuotes";
@@ -82,13 +84,9 @@
             this.Name = "ViewAllQuotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quotes";
-
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewAllQuotes_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridAllQuotes)).EndInit();
-
             this.Load += new System.EventHandler(this.ViewAllQuotes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAllQuotes)).EndInit();
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
