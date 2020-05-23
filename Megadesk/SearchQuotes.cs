@@ -58,6 +58,10 @@ namespace Megadesk
         private void save_Click(object sender, EventArgs e)
         {
 
+            //bind datagrid with datatable
+            dataGridSearchQuotes.DataSource = DeskQuote.getAllQuotes();
+
+
 
         }
     }

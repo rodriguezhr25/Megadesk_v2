@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Megadesk
 {
-    
+
     class DeskQuote
     {
         private DateTime quoteDate;
@@ -18,7 +18,7 @@ namespace Megadesk
         private string customerName;
         private Desk desktop;
         private double deskSize;
-       
+
         public DeskQuote()
         {
 
@@ -103,11 +103,11 @@ namespace Megadesk
         {
             deskSize = getDeskSize();
             string type = "";
-            if(deskSize < 1000)
+            if (deskSize < 1000)
             {
                 type = "small";
             }
-            else if(deskSize < 2001)
+            else if (deskSize < 2001)
             {
                 type = "medium";
             }
@@ -186,16 +186,16 @@ namespace Megadesk
             }
             return rushOrderCost;
         }
-            /*
-       * the getMaterialPrice method
-       * Purpose: to compute total cost for the material used
-       */
-            public double getMaterialPrice()
-            {
+        /*
+   * the getMaterialPrice method
+   * Purpose: to compute total cost for the material used
+   */
+        public double getMaterialPrice()
+        {
             string deskMaterial = desktop.getMaterial();
-                double materialCost = 0;
-                switch (deskMaterial)
-                {
+            double materialCost = 0;
+            switch (deskMaterial)
+            {
                 case "Oak":
                     materialCost = 200;
                     break;
@@ -214,8 +214,8 @@ namespace Megadesk
 
 
             }
-                return materialCost;
-            
+            return materialCost;
+
         }
         /*
           * the getTotalPrice method
@@ -227,13 +227,13 @@ namespace Megadesk
             double surfaceExtra = 0;
 
             double sizeCost;
-           
+
             if (deskSize > 1000)
             {
                 surfaceExtra = deskSize - 1000;
             }
             sizeCost = surfaceExtra + BASE_PRICE;
-            return sizeCost;           
+            return sizeCost;
 
         }
         /*
@@ -242,14 +242,14 @@ namespace Megadesk
           */
         public double getTotalPrice()
         {
-            deskSize = getDeskSize();         
+            deskSize = getDeskSize();
             double costDrawers = getDrawersPrice();
             double costMaterial = getMaterialPrice();
             double costRushOrder = getRushDaysPrice();
             double costSize = getSizeCost();
             double totalPrice;
 
-            
+
             totalPrice = costSize + costDrawers + costMaterial + costRushOrder;
             return totalPrice;
 
@@ -309,7 +309,7 @@ namespace Megadesk
             {
                 return null;
                 //throw new ApplicationException("The file cannot be opened", e);
-                
+
             }
 
             //if an error has occurred the array returns null
@@ -318,7 +318,7 @@ namespace Megadesk
         }
 
         /*
-        * the etAllQuotes method
+        * the getAllQuotes method
         * Purpose: to obtain all quotes from json file
         * author: Antonio Lefiñir
         * create date:  22 may 2020
@@ -326,7 +326,7 @@ namespace Megadesk
         public static DataTable getAllQuotes()
         {
             //obtain file information
-            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json" );
+            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json");
 
             //convert the string to datatable
             var table = JsonConvert.DeserializeObject<DataSet>(initialJson);
@@ -336,7 +336,7 @@ namespace Megadesk
             //change date format to shortdate
             for (int i = 0; i < table.Tables[0].Rows.Count; i++)
             {
-                table.Tables[0].Rows[i]["dateQuote"]  = table.Tables[0].Rows[i]["dateQuote"].ToString().Substring(1, 10);                
+                table.Tables[0].Rows[i]["dateQuote"] = table.Tables[0].Rows[i]["dateQuote"].ToString().Substring(1, 10);
             }
 
             //set column names
@@ -358,6 +358,50 @@ namespace Megadesk
             return table.Tables[0];
 
         }
+        /*
+       * the getAllQuotesMaterial method
+       * Purpose: To search quotes saved with especific material
+       * author: Hector Rodriguez / Antonio Lefinir
+       * create date:  22 may 2020
+       */
+        public static DataTable getAllQuotesMaterial()
+        {
+            //obtain file information
+            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json");
+
+            //convert the string to datatable
+            var table = JsonConvert.DeserializeObject<DataSet>(initialJson);
+
+            //formating table
+
+            //change date format to shortdate
+            for (int i = 0; i < table.Tables[0].Rows.Count; i++)
+            {
+                table.Tables[0].Rows[i]["dateQuote"] = table.Tables[0].Rows[i]["dateQuote"].ToString().Substring(1, 10);
+            }
+
+            //set column names
+            table.Tables[0].Columns[0].ColumnName = "Id";
+            table.Tables[0].Columns[1].ColumnName = "Customer Name";
+            table.Tables[0].Columns[2].ColumnName = "Cost Size ($)";
+            table.Tables[0].Columns[3].ColumnName = "Size (inch)";
+            table.Tables[0].Columns[4].ColumnName = "Total Size (inch)";
+            table.Tables[0].Columns[5].ColumnName = "Size Average (inch)";
+            table.Tables[0].Columns[6].ColumnName = "Drawers Cost";
+            table.Tables[0].Columns[7].ColumnName = "Material";
+            table.Tables[0].Columns[8].ColumnName = "Material Cost";
+            table.Tables[0].Columns[9].ColumnName = "Shipping";
+            table.Tables[0].Columns[10].ColumnName = "Shipping Cost";
+            table.Tables[0].Columns[11].ColumnName = "Total Cost ($)";
+
+
+            //return table
+            return table.Tables[0];
+
+        }
+
+
+
 
     }
 }
