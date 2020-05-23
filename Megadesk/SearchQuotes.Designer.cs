@@ -159,6 +159,7 @@
             this.save.TabIndex = 23;
             this.save.Text = "Search";
             this.save.UseVisualStyleBackColor = false;
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // SearchQuotes
             // 
