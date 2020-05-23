@@ -23,6 +23,7 @@ namespace Megadesk
             InitializeComponent();
         }
 
+        List<DesktopMaterial> materials = new List<DesktopMaterial>();
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -65,6 +66,12 @@ namespace Megadesk
 
         private void AddQuote_Load(object sender, EventArgs e)
         {
+            foreach (DesktopMaterial item in Enum.GetValues(typeof(DesktopMaterial)))
+            {
+                materials.Add(item);
+            }
+            cboMaterial.DataSource = materials;
+            cboMaterial.Text = "Select";
 
         }
 
@@ -163,18 +170,19 @@ namespace Megadesk
         }
         private void txtWidth_Validating(object sender, CancelEventArgs e)
         {
+            Desk mydesk = new Desk();
             int width;
             string errorMsg;
             try
             {
                 width = int.Parse(txtWidth.Text);
 
-                if(width < constraintVariables.MIN_WIDTH || width > constraintVariables.MAX_WIDTH)
+                if(width < Desk.MIN_WIDTH || width > Desk.MAX_WIDTH)
                 {
                     //Cancel the event, select the text to be corrected and focus on control
                     txtWidth.SelectAll();
                     e.Cancel = true;
-                    errorMsg = "Min val: 24 , Max Val: 96";
+                    errorMsg = "Min val: " +  Desk.MIN_WIDTH   +  " Max Val: " + Desk.MAX_WIDTH;
                     this.errorProvider.SetError(txtWidth, errorMsg);
                 }
             }
@@ -210,12 +218,12 @@ namespace Megadesk
             {
                 depth = int.Parse(txtDepth.Text);
 
-                if (depth < constraintVariables.MIN_DEPTH || depth > constraintVariables.MAX_DEPTH)
+                if (depth < Desk.MIN_DEPTH || depth > Desk.MAX_DEPTH)
                 {
                     //Cancel the event, select the text to be corrected and focus on control
                     txtDepth.SelectAll();
                     e.Cancel = true;
-                    errorMsg = "Min val: 12 , Max Val: 48";
+                    errorMsg = "Min val: " + Desk.MIN_DEPTH + " Max Val: " + Desk.MAX_DEPTH;
                     this.errorProvider.SetError(txtDepth, errorMsg);
                 }
                
@@ -246,5 +254,8 @@ namespace Megadesk
             mainMenuP.Show();
             Hide();
         }
-    }
+    }   
+
+
+
 }
