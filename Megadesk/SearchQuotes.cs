@@ -47,12 +47,18 @@ namespace Megadesk
            
         }
 
+
         private void SearchQuotes_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainMenu mainMenuP = new MainMenu();
             //mainMenuP.Tag = this;
             mainMenuP.Show();
             Hide();
+        }
+        private void save_Click(object sender, EventArgs e)
+        {
+
+
         }
     }
         
