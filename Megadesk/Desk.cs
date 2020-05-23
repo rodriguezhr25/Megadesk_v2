@@ -15,12 +15,7 @@ namespace Megadesk
         ,Veneer
         ,Pine
     };
-   struct DeskProperties
-    {
-        public DesktopMaterial materials;
-    }
-
-  
+   
     class Desk
     {
         private double width;
@@ -31,7 +26,6 @@ namespace Megadesk
         public const double MAX_WIDTH = 96;
         public const double MIN_DEPTH = 12;
         public const double MAX_DEPTH = 48;
-
 
         //default constructor of Desk object
         public Desk()
@@ -109,7 +103,5 @@ namespace Megadesk
         {
             return this.material;
         }
-            
-
     }
 }

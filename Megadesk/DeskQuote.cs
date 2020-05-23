@@ -3,8 +3,8 @@ using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Data;
-//using System.Date;
-
+using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace Megadesk
 {
@@ -342,10 +342,10 @@ namespace Megadesk
             //set column names
             table.Tables[0].Columns[0].ColumnName = "Id";
             table.Tables[0].Columns[1].ColumnName = "Customer Name";
-            table.Tables[0].Columns[2].ColumnName = "Cost Size ($)";
-            table.Tables[0].Columns[3].ColumnName = "Size (inch)";
+            table.Tables[0].Columns[2].ColumnName = "Quote Date";
+            table.Tables[0].Columns[3].ColumnName = "Cost Size ($)";
             table.Tables[0].Columns[4].ColumnName = "Total Size (inch)";
-            table.Tables[0].Columns[5].ColumnName = "Size Average (inch)";
+            table.Tables[0].Columns[5].ColumnName = "Size Overage (inch)";
             table.Tables[0].Columns[6].ColumnName = "Drawers Cost";
             table.Tables[0].Columns[7].ColumnName = "Material";
             table.Tables[0].Columns[8].ColumnName = "Material Cost";
@@ -361,42 +361,51 @@ namespace Megadesk
         /*
        * the getAllQuotesMaterial method
        * Purpose: To search quotes saved with especific material
-       * author: Hector Rodriguez / Antonio Lefinir
+       * author: Hector Rodriguez 
        * create date:  22 may 2020
        */
-        public static DataTable getAllQuotesMaterial()
+        public static DataTable getAllQuotesMaterial(string material)
         {
             //obtain file information
-            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json");
+            var initialJson = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"data\quotes.json");       
+  
+            DataSet dataSet = JsonConvert.DeserializeObject<DataSet>(initialJson);
+          
 
-            //convert the string to datatable
-            var table = JsonConvert.DeserializeObject<DataSet>(initialJson);
-
-            //formating table
-
-            //change date format to shortdate
-            for (int i = 0; i < table.Tables[0].Rows.Count; i++)
+            DataTable dataTable = dataSet.Tables["quotes"];
+         
+            // Query to filter data
+            string query;
+            query = "material = '" + material + "'";
+            // Use the Select method to find all rows matching the filter.
+            DataRow[] rows = dataTable.Select(query);
+            DataTable dataFiltered = new DataTable();
+            if (rows.Length > 0)//check is there are rows
             {
-                table.Tables[0].Rows[i]["dateQuote"] = table.Tables[0].Rows[i]["dateQuote"].ToString().Substring(1, 10);
+                ////change date format to shortdate
+                foreach (DataRow item in rows)
+                {
+                    item["dateQuote"] = item["dateQuote"].ToString().Substring(1, 10);
+                }
+                dataFiltered = rows.CopyToDataTable();
+
+                ////set column names
+                dataFiltered.Columns[0].ColumnName = "Id";
+                dataFiltered.Columns[1].ColumnName = "Customer Name";
+                dataFiltered.Columns[2].ColumnName = "Quote Date";
+                dataFiltered.Columns[3].ColumnName = "Cost Size ($)";
+                dataFiltered.Columns[4].ColumnName = "Total Size (inch)";
+                dataFiltered.Columns[5].ColumnName = "Size Overage (inch)";
+                dataFiltered.Columns[6].ColumnName = "Drawers Cost";
+                dataFiltered.Columns[7].ColumnName = "Material";
+                dataFiltered.Columns[8].ColumnName = "Material Cost";
+                dataFiltered.Columns[9].ColumnName = "Shipping";
+                dataFiltered.Columns[10].ColumnName = "Shipping Cost";
+                dataFiltered.Columns[11].ColumnName = "Total Cost ($)";
             }
-
-            //set column names
-            table.Tables[0].Columns[0].ColumnName = "Id";
-            table.Tables[0].Columns[1].ColumnName = "Customer Name";
-            table.Tables[0].Columns[2].ColumnName = "Cost Size ($)";
-            table.Tables[0].Columns[3].ColumnName = "Size (inch)";
-            table.Tables[0].Columns[4].ColumnName = "Total Size (inch)";
-            table.Tables[0].Columns[5].ColumnName = "Size Average (inch)";
-            table.Tables[0].Columns[6].ColumnName = "Drawers Cost";
-            table.Tables[0].Columns[7].ColumnName = "Material";
-            table.Tables[0].Columns[8].ColumnName = "Material Cost";
-            table.Tables[0].Columns[9].ColumnName = "Shipping";
-            table.Tables[0].Columns[10].ColumnName = "Shipping Cost";
-            table.Tables[0].Columns[11].ColumnName = "Total Cost ($)";
+            return dataFiltered;
 
 
-            //return table
-            return table.Tables[0];
 
         }
 

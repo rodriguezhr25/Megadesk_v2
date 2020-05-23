@@ -37,7 +37,7 @@ namespace Megadesk
             //mainMenuP.Tag = this;
             mainMenuP.Show();
             Hide();
-
+        }
         private void ViewAllQuotes_Load(object sender, EventArgs e)
         {
             //bind datagrid with datatable

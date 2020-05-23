@@ -42,7 +42,7 @@ namespace Megadesk
                 materials.Add(item);
             }
             desktopMaterialComboBox.DataSource = materials;
-            desktopMaterialComboBox.Text = "Select";
+           // desktopMaterialComboBox.Text = "Select";
 
            
         }
@@ -55,13 +55,12 @@ namespace Megadesk
             mainMenuP.Show();
             Hide();
         }
-        private void save_Click(object sender, EventArgs e)
+        private void search_Click(object sender, EventArgs e)
         {
 
             //bind datagrid with datatable
-            dataGridSearchQuotes.DataSource = DeskQuote.getAllQuotes();
-
-
+            dataGridSearchQuotes.DataSource = DeskQuote.getAllQuotesMaterial(desktopMaterialComboBox.Text);
+   
 
         }
     }
